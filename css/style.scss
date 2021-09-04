@@ -1,0 +1,116 @@
+/*var*/
+$main:#2F80ED;
+$text:#000;
+$textD:#828282;
+$border:#d9d9d9;
+
+/*Reset default*/
+*{
+    padding: 0px;
+    box-sizing: border-box;
+    margin: 0px;
+}
+body{
+    font-size: 16px;
+    font-family: "Open Sans",Arial, Helvetica, sans-serif;
+}
+
+
+
+.box-uploader{
+    max-width: 768px;
+    padding: 1rem 2rem;
+    margin: auto;
+}
+.upload{
+    position: relative;
+    border-radius: 10px;
+    padding: 2rem 1rem;
+    text-align: center;
+    border:2px dashed $border;
+    margin-bottom: 1rem;
+    .file{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        opacity: 0;
+        cursor: pointer;
+        
+    }
+    .link{
+        color: $main;
+        text-decoration: none;
+    }
+    .icon{
+        width: 80px;
+        display: inline-block;
+        margin-bottom: 1rem;
+        img{
+            width: 100%;
+        }
+    }
+    .upload-title{
+        font-size: 1.5rem;
+        font-weight:600;
+        margin-bottom: 0.5rem;
+    }
+    .upload-note{
+        font-size: 1rem;
+        color: $textD;
+    }
+    
+}
+.list-files{
+    .item{
+        margin-bottom: 1.5rem;
+        display: flex;
+        &:last-child{
+            margin-bottom: 1.5rem;
+        }
+    }
+    .icon{
+        width: 20px;
+        img{
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+    }
+    .text{
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin: 0px 0.5rem;
+    }
+    .delete{
+        border: 0px;
+        background: none;
+        width: 20px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        &:hover{
+            transition: transform 0.2s ease;
+            transform: scale(1.1);
+        }
+        img{
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+    }
+}
+
+
+
+/*Responsive*/
+
+
+@media(max-width:768px){
+    html,body{
+        font-size: 14px;
+    }
+}

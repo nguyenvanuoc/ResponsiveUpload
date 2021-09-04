@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Import My style -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Import Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="box-uploader">
+        <div class="upload">
+            <input type="file" class="file" multiple id="file">
+            <div class="icon">
+                <img src="img/upload.svg" alt="">
+            </div>
+            <div class="upload-title">
+                Drag and drop or <a href="#" class="link">browse</a>
+            </div>
+            <div class="upload-note">Max. File size 20Mb</div>
+
+        </div>
+        <div class="list-files">
+            
+        </div>
+    </div>
+    <!-- Get Name file jquery -->
+    <script>
+        $("#file").change(function(e){
+            var _html='';
+            for (let i = 0; i < e.target.files.length; i++) {
+                console.log(e.target.files[i].name);
+                console.log(e.target.files[i].type);
+                var filename= e.target.files[i].name;
+                /*Get Type File*/
+                var filetype = e.target.files[i].type;
+                var _htmlType='';
+                if(filetype=="application/msword" || filetype=='application/vnd.openxmlformats-officedocument.wordprocessingml.document'){
+                    _htmlType='<img src="img/word.svg" alt="">';
+
+                }else if(filetype == "application/vnd.ms-excel" || filetype == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'){
+                    _htmlType = '<img src="img/excel.svg" alt="">';
+                }else{
+                    _htmlType = '<img src="img/pdf.svg" alt="">';
+                }
+
+                _html+=`
+                    <div class="item">
+                        <div class="icon">
+                            `+ _htmlType+`
+                        </div>
+                        <span class="text">
+                            `+filename+`
+                        </span>
+                        <button class="delete">
+                            <img src="img/trash.svg" alt="">
+                        </button>
+                    </div>
+                `;
+            }
+            $(".list-files").append(_html);
+        });
+
+        // remove File
+        $('.list-files').on("click",'.delete',function(){
+            $(this).parents(".item").remove();
+        });
+</script>
+</body>
+</html>
